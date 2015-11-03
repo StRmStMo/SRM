@@ -26,7 +26,7 @@ Example : 'Plots from the funcitons for evaluating denisities of Archimedean cop
 
 ```
 
-![Picture1](Becker_SRMfig5.5.png)
+![Picture1](SRM_fig5.5.png)
 
 ```R
 ## clear history
