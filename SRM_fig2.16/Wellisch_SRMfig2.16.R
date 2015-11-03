@@ -1,3 +1,32 @@
+# ------------------------------------------------------------------------------
+# Project:     SRM - Stochastische Risikomodellierung und statistische Methoden
+# ------------------------------------------------------------------------------
+# Quantlet:    SRM_fig2.14
+# ------------------------------------------------------------------------------
+# Description: Produces the QQ plots for four simulated samples of 
+#              N(0,1), N(5,1), N(0,9) and N(5,9). QQ-plots compare empirical 
+#              quantiles of a distribution with theoretical quantiles of the 
+#              standard normal distribution.
+# ------------------------------------------------------------------------------
+# Keywords:    plot, time-series, graphical representation, visualization,
+#              bond,
+# ------------------------------------------------------------------------------
+# See also:
+# ------------------------------------------------------------------------------
+# Author:      Wellisch
+# ------------------------------------------------------------------------------
+
+## clear history
+rm(list = ls(all = TRUE))
+graphics.off()
+
+## install and load packages
+libraries = c("zoo")
+lapply(libraries, function(x) if (!(x %in% installed.packages())) {
+  install.packages(x)
+})
+lapply(libraries, library, quietly = TRUE, character.only = TRUE)
+
 # figur16-well
 
 # mit package car
