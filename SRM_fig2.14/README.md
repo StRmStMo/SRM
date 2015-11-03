@@ -35,17 +35,9 @@ Example :
 ![Picture1](SRM_fig2.14.png)
 
 ```R
-
 ## clear history
 rm(list = ls(all = TRUE))
 graphics.off()
-
-## install and load packages
-libraries = c("zoo")
-lapply(libraries, function(x) if (!(x %in% installed.packages())) {
-install.packages(x)
-})
-lapply(libraries, library, quietly = TRUE, character.only = TRUE)
 
 ## Q-Q-Normal-Plots mit Sollgeraden
 ## Mit festem seed zur Reproduktion
