@@ -6,7 +6,7 @@
 
 ```yaml
 
-Name of QuantLet : SRMfig5.5
+Name of QuantLet : SRM_fig5.5
 
 Published in : SRM
 
@@ -30,16 +30,17 @@ Example : 'Plots from the funcitons for evaluating denisities of Archimedean cop
 
 ```R
 ## clear history
+rm(list = ls(all = TRUE))
+graphics.off()
 
-# figur5.5-becker
+## install and load packages
+libraries = c("QRM")
+lapply(libraries, function(x) if (!(x %in% installed.packages())) {
+install.packages(x)
+})
+lapply(libraries, library, quietly = TRUE, character.only = TRUE)
 
-# mit package QRM
-
-library(QRM)
-
-###
-
-plot(rcopula.clayton(500,3,2), pch = 19, ann = F, cex = 0.6, cex.axis = 0.6)
-plot(rcopula.frank(500,6,2), pch = 19, ann = F, cex = 0.6, cex.axis = 0.6)
+plot(rcopula.clayton(500, 3, 2), pch = 19, ann = F, cex = 0.6, cex.axis = 0.6)
+plot(rcopula.frank(500, 6, 2), pch = 19, ann = F, cex = 0.6, cex.axis = 0.6)
 
 ```
