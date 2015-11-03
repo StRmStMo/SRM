@@ -23,13 +23,13 @@ graphics.off()
 ## Q-Q-Normal-Plots mit Sollgeraden
 ## Mit festem seed zur Reproduktion
 set.seed(1234)
-w <- rnorm(100)
+w = rnorm(100)
 set.seed(1234)
-x <- rnorm(100, mean = 5)
+x = rnorm(100, mean = 5)
 set.seed(1234)
-y <- rnorm(100, sd = 3)
+y = rnorm(100, sd = 3)
 set.seed(1234)
-z <- rnorm(100, mean = 5, sd = 3)
+z = rnorm(100, mean = 5, sd = 3)
 
 par(mfrow = c(2, 2))
 qqnorm(w, main = "Normal Q-Q-Plot der Stichprobe w", xlab = "theoretische Standardnormal-Quantile", 
