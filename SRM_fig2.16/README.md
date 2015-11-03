@@ -11,13 +11,13 @@ Name of QuantLet : SRM_fig2.16
 
 Published in : SRM
 
-Description : 'Produces the QQ plots for simulated samples of standard 
-normal distribution and exponential distribution with sample size 100. 
-QQ-plots compare empirical quantiles of a distribution with theoretical 
-quantiles of the standard normal distribution.'
+Description : 'Produces the QQ plots for simulated samples of standard normal 
+distribution and exponential distribution with sample size 100. QQ-plots compare 
+empirical quantiles of a distribution with theoretical quantiles of the standard 
+normal distribution .'
 
-Keywords : 'qq-plot, simulation, normal, normal distribution, plot,
-graphical representation, exponential'
+Keywords : 'qq-plot, simulation, normal, normal distribution, , exponential, plot,
+graphical representation'
 
 See also : 
 
@@ -28,7 +28,7 @@ Submitted :
 Datafile : 
 
 Example :
-- 'QQ plots for simulated samples of standard normal distribution and 
+- 'Q-Q-Normal-Plots for simulated samples of standard normal distribution and
 exponential distribution.'
 
 ```
