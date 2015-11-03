@@ -23,7 +23,8 @@ Submitted :
 
 Datafile : 
 
-Example : 'Produces the curves of binomial distribution function with the parameters size and probability. '
+Example : 'Produces the curves of binomial distribution function with the parameters size 
+and probability. '
 
 
 ```
