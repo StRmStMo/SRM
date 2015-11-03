@@ -1,5 +1,5 @@
 
-Name of QuantLet : SRM_fig2.14
+Name of QuantLet : SRM_fig4.6
 
 Published in : SRM
 
