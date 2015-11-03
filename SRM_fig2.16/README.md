@@ -49,9 +49,9 @@ lapply(libraries, library, quietly = TRUE, character.only = TRUE)
 
 ## Stichproben erzeugen Fuer Reproduktion mit fester seed
 set.seed(1234)
-x <- rnorm(100)
+x = rnorm(100)
 set.seed(1234)
-y <- rexp(100)
+y = rexp(100)
 
 par(mfrow = c(1, 2))
 
