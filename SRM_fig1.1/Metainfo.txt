@@ -3,7 +3,8 @@ Name of QuantLet : SRM_fig1.1
 
 Published in : SRM
 
-Description : 'Produces the curves for the binomial distribution function and the pseudoinverse function under the probability=0.4 and the size=5.'
+Description : 'Produces the curves for the binomial distribution function and the pseudoinverse function 
+under the probability=0.4 and the size=5.'
 
 Keywords : 'plot, curve, binomial, distribution, function, visualization'
 
