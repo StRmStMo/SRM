@@ -1,7 +1,7 @@
 
 ![http://quantnet.wiwi.hu-berlin.de/style/banner.png](http://quantnet.wiwi.hu-berlin.de/style/banner.png)
 
-## ![qlogo](http://quantnet.wiwi.hu-berlin.de/graphics/quantlogo.png) **SRM_fig2.16**
+## ![qlogo](http://quantnet.wiwi.hu-berlin.de/graphics/quantlogo.png) **SRM_fig4.2**
 
 
 ```yaml
@@ -29,7 +29,7 @@ Example :
 - 'The power function of t test.'
 ```
 
-![Picture1](SRM_fig2.16.png)
+![Picture1](SRM_fig4.2.png)
 
 ```R
 
