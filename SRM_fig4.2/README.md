@@ -7,60 +7,69 @@
 ```yaml
 
 
-Name of QuantLet : SRM_fig2.16
+Name of QuantLet : SRM_fig4.2
 
 Published in : SRM
 
-Description : 'Produces the QQ plots for simulated samples of standard 
-normal distribution and exponential distribution with sample size 100. 
-QQ-plots compare empirical quantiles of a distribution with theoretical 
-quantiles of the standard normal distribution.'
+Description : 'Plots the power functions of t test, with
+fixed u= 2.3 and different significant levels.'
 
-Keywords : 'qq-plot, simulation, normal, normal distribution, plot,
-graphical representation, exponential'
+Keywords : 't distribution, test, plot, student, Student,
+graphical representation'
 
 See also : 
 
-Author : Wellisch
+Author : Sandor
 
 Submitted :
 
 Datafile : 
 
 Example :
-- 'QQ plots for simulated samples of standard normal distribution and 
-exponential distribution.'
-
+- 'The power function of t test.'
 ```
 
 ![Picture1](SRM_fig2.16.png)
 
 ```R
+
 ## clear history
 rm(list = ls(all = TRUE))
 graphics.off()
 
-## install and load packages
-libraries = c("car")
-lapply(libraries, function(x) if (!(x %in% installed.packages())) {
-install.packages(x)
-})
-lapply(libraries, library, quietly = TRUE, character.only = TRUE)
+## Bild Gutefunktion
+par(mfrow = c(1, 1))
+WertMu0   = 2.3    #Erwartungswert in der Nullhypothese
+WertSigma = 1.672  #Bekannte Standardabweichung
+WertN     = 36
+Alpha1    = 0.05   #Signifikanzniveau
+U1        = qt(1 - Alpha1/2, WertN - 1)                          #Quantil
+Lambda    = function(mu) sqrt(WertN) * (mu - WertMu0)/WertSigma  #Erwartungswert von T
 
-## Stichproben erzeugen Fuer Reproduktion mit fester seed
-set.seed(1234)
-x <- rnorm(100)
-set.seed(1234)
-y <- rexp(100)
+## Definition der Funktion G
+Fehler1 = function(mu) 1 - pt(U1, WertN - 1, Lambda(mu)) + 
+pt(-U1, WertN - 1, Lambda(mu))
 
-par(mfrow = c(1, 2))
+## Zeichnung von Funktion G
+curve(Fehler1, 1, 3.5, 
+ylab = expression(paste("Gutefunktion:  ", G(mu))), 
+xlab = expression(mu))
 
-## col.lines=palette()[1] schwarze Sollgerade und KI
-qqPlot(x, dist = "norm", envelope = 0.99, col = palette()[1], col.lines = palette()[1], 
-main = "Normal Q-Q-Plot", xlab = "theoretische Standardnormal-Quantile", 
-ylab = "empirische Quantile")
+## Wie oben mit einem zweiten Signifikanzniveau
+Alpha2  = 0.1
+U2      = qt(1 - Alpha2/2, WertN - 1)
+Fehler2 = function(mu) 1 - (pt( U2, WertN - 1, Lambda(mu)) - 
+pt(-U2, WertN - 1, Lambda(mu)))
 
-qqPlot(y, dist = "exp", envelope = 0.99, col = palette()[1], col.lines = palette()[1], 
-main = "Exponential Q-Q-Plot", xlab = "theoretische Standardexponential-Quantile", 
-ylab = "empirische Quantile")
+curve(Fehler2, 1, 3.5, add = TRUE, lty = 2)
+
+## Beschriftung obere Funktion
+text(1.5, 0.6, expression(alpha == 0.05))
+## Beschriftung untere Funktion
+text(2.1, 0.4, expression(alpha == 0.1))
+segments(0, 0.05, 2.3, 0.05)        
+segments(0, 0.1, 2.3, 0.1, lty = 3) 
+text(1.25, 0.08, expression(paste("G(2,3)=", alpha)))
+title("Gutefunktion")
+
 ```
