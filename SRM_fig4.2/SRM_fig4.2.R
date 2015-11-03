@@ -32,6 +32,8 @@ lapply(libraries, library, quietly = TRUE, character.only = TRUE)
 #Bild G??tefunktion           #
 #Abbildung 4.2 G??tefunktion  #
 ##############################
+
+par(mfrow = c(1, 1))
 WertMu0<-2.3      #Erwartungswert in der Nullhypothese
 WertSigma<-1.672	#Bekannte Standardabweichung
 WertN<-36   	#Stichprobengr??e
@@ -46,7 +48,6 @@ Fehler1<- function(mu) 1-pt(U1,WertN-1,Lambda(mu))+pt(-U1,WertN-1,Lambda(mu))
 curve(Fehler1,1,3.5,ylab=expression(paste("G??tefunktion:  ",G(mu))) , xlab=expression(mu))
 
 #Wie oben mit einem zweiten Signifikanzniveau
-
 Alpha2<-0.1
 U2<-qt(1-Alpha2/2,WertN-1)
 Fehler2<- function(mu) 1-( pt(U2,WertN-1,Lambda(mu))-pt(-U2,WertN-1,Lambda(mu)))

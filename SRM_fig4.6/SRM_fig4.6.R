@@ -1,3 +1,33 @@
+# ------------------------------------------------------------------------------
+# Project:     SRM - Stochastische Risikomodellierung und statistische Methoden
+# ------------------------------------------------------------------------------
+# Quantlet:    SRM_fig4.2
+# ------------------------------------------------------------------------------
+# Description: Produces the QQ plots for simulated samples ofstandard normal 
+#              distribution and exponential distribution with sample size 100. 
+#              QQ-plots compare empirical quantiles of a distribution with 
+#              theoretical quantiles of the standard normal distribution.
+# ------------------------------------------------------------------------------
+# Keywords:    qq-plot, simulation, normal, normal distribution, plot, 
+#              graphical representation, exponential
+# ------------------------------------------------------------------------------
+# See also:
+# ------------------------------------------------------------------------------
+# Author:      Wellisch
+# ------------------------------------------------------------------------------
+
+## clear history
+rm(list = ls(all = TRUE))
+graphics.off()
+
+## install and load packages
+libraries = c("car")
+lapply(libraries, function(x) if (!(x %in% installed.packages())) {
+  install.packages(x)
+})
+lapply(libraries, library, quietly = TRUE, character.only = TRUE)
+
+
 ##########################################################
 #Konfidentintervalle mit dem LQT                         #
 ##########################################################
@@ -6,7 +36,7 @@
 
 y<-4                # 4 treffer bei 50 Beobachtungen
 n<-50
-p_Dach <-y/n    		#ML-Schaetzer für Binomialverteilung
+p_Dach <-y/n    		#ML-Schaetzer f??r Binomialverteilung
 
 #Funktionen
 L<- function(p) p^y*(1-p)^(n-y)	#Likelihood
