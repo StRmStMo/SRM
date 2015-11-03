@@ -1,69 +1,66 @@
 
 ![http://quantnet.wiwi.hu-berlin.de/style/banner.png](http://quantnet.wiwi.hu-berlin.de/style/banner.png)
 
-## ![qlogo](http://quantnet.wiwi.hu-berlin.de/graphics/quantlogo.png) **SRM_fig2.14**
+## ![qlogo](http://quantnet.wiwi.hu-berlin.de/graphics/quantlogo.png) **SRM_fig2.16**
 
 
 ```yaml
 
 
-Name of QuantLet : SRM_fig2.14
+Name of QuantLet : SRM_fig2.16
 
 Published in : SRM
 
-Description : 'Produces the QQ plots for four simulated samples of 
-N(0,1), N(5,1), N(0,9) and N(5,9). QQ-plots compare empirical 
-quantiles of a distribution with theoretical quantiles of the standard 
-normal distribution.'
+Description : 'Produces the QQ plots for simulated samples of standard 
+normal distribution and exponential distribution with sample size 100. 
+QQ-plots compare empirical quantiles of a distribution with theoretical 
+quantiles of the standard normal distribution.'
 
 Keywords : 'qq-plot, simulation, normal, normal distribution, plot,
-graphical representation'
+graphical representation, exponential'
 
 See also : 
 
-Author : Sandor
+Author : Wellisch
 
 Submitted :
 
 Datafile : 
 
 Example :
-- 'Q-Q-Normal-Plots mit Sollgeraden.'
+- 'QQ plots for simulated samples of standard normal distribution and 
+exponential distribution.'
 
 ```
 
-![Picture1](SRM_fig2.14.png)
+![Picture1](SRM_fig2.16.png)
 
 ```R
 ## clear history
 rm(list = ls(all = TRUE))
 graphics.off()
 
-## Q-Q-Normal-Plots mit Sollgeraden
-## Mit festem seed zur Reproduktion
-set.seed(1234)
-w <- rnorm(100)
-set.seed(1234)
-x <- rnorm(100, mean = 5)
-set.seed(1234)
-y <- rnorm(100, sd = 3)
-set.seed(1234)
-z <- rnorm(100, mean = 5, sd = 3)
+## install and load packages
+libraries = c("car")
+lapply(libraries, function(x) if (!(x %in% installed.packages())) {
+install.packages(x)
+})
+lapply(libraries, library, quietly = TRUE, character.only = TRUE)
 
-par(mfrow = c(2, 2))
-qqnorm(w, main = "Normal Q-Q-Plot der Stichprobe w", xlab = "theoretische Standardnormal-Quantile", 
-ylab = "empirische Quantile")
-qqline(w)
+## Stichproben erzeugen Fuer Reproduktion mit fester seed
+set.seed(1234)
+x <- rnorm(100)
+set.seed(1234)
+y <- rexp(100)
 
-qqnorm(x, main = "Normal Q-Q-Plot der Stichprobe x", xlab = "theoretische Standardnormal-Quantile", 
-ylab = "empirische Quantile")
-qqline(x)
+par(mfrow = c(1, 2))
 
-qqnorm(y, main = "Normal Q-Q-Plot der Stichprobe y", xlab = "theoretische Standardnormal-Quantile", 
+## col.lines=palette()[1] schwarze Sollgerade und KI
+qqPlot(x, dist = "norm", envelope = 0.99, col = palette()[1], col.lines = palette()[1], 
+main = "Normal Q-Q-Plot", xlab = "theoretische Standardnormal-Quantile", 
 ylab = "empirische Quantile")
-qqline(y)
 
-qqnorm(z, main = "Normal Q-Q-Plot der Stichprobe z", xlab = "theoretische Standardnormal-Quantile", 
+qqPlot(y, dist = "exp", envelope = 0.99, col = palette()[1], col.lines = palette()[1], 
+main = "Exponential Q-Q-Plot", xlab = "theoretische Standardexponential-Quantile", 
 ylab = "empirische Quantile")
-qqline(z)
 ```

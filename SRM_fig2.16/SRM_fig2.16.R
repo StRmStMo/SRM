@@ -3,13 +3,13 @@
 # ------------------------------------------------------------------------------
 # Quantlet:    SRM_fig2.16
 # ------------------------------------------------------------------------------
-# Description: Produces the QQ plots for four simulated samples of 
-#              N(0,1), N(5,1), N(0,9) and N(5,9). QQ-plots compare empirical 
-#              quantiles of a distribution with theoretical quantiles of the 
-#              standard normal distribution.
+# Description: Produces the QQ plots for simulated samples ofstandard normal 
+#              distribution and exponential distribution with sample size 100. 
+#              QQ-plots compare empirical quantiles of a distribution with 
+#              theoretical quantiles of the standard normal distribution.
 # ------------------------------------------------------------------------------
 # Keywords:    qq-plot, simulation, normal, normal distribution, plot, 
-#              graphical representation
+#              graphical representation, exponential
 # ------------------------------------------------------------------------------
 # See also:
 # ------------------------------------------------------------------------------
@@ -21,42 +21,25 @@ rm(list = ls(all = TRUE))
 graphics.off()
 
 ## install and load packages
-libraries = c("zoo")
+libraries = c("car")
 lapply(libraries, function(x) if (!(x %in% installed.packages())) {
   install.packages(x)
 })
 lapply(libraries, library, quietly = TRUE, character.only = TRUE)
 
-# figur16-well
-
-# mit package car
-
-library(car)
-
-###
-
-# Stichproben erzeugen
-# Fuer Reproduktion mit fester seed
-
+## Stichproben erzeugen Fuer Reproduktion mit fester seed
 set.seed(1234)
 x <- rnorm(100)
-
 set.seed(1234)
 y <- rexp(100)
 
-par(mfrow=c(1,2))
+par(mfrow = c(1, 2))
 
-#  col.lines=palette()[1] schwarze Sollgerade und KI
+## col.lines=palette()[1] schwarze Sollgerade und KI
+qqPlot(x, dist = "norm", envelope = 0.99, col = palette()[1], col.lines = palette()[1], 
+       main = "Normal Q-Q-Plot", xlab = "theoretische Standardnormal-Quantile", 
+       ylab = "empirische Quantile")
 
-#qq.plot(x,dist="norm",envelope=.99, col=palette()[1], col.lines=palette()[1], 
-qqPlot(x,dist="norm",envelope=.99, col=palette()[1], col.lines=palette()[1], 
-main="Normal Q-Q-Plot", 
-xlab="theoretische Standardnormal-Quantile",
-ylab="empirische Quantile")
-
-
-#qq.plot(y,dist="exp",envelope=.99, col=palette()[1], 
-qqPlot(y,dist="exp",envelope=.99, col=palette()[1], col.lines=palette()[1], 
-main="Exponential Q-Q-Plot", 
-xlab="theoretische Standardexponential-Quantile",
-ylab="empirische Quantile")
+qqPlot(y, dist = "exp", envelope = 0.99, col = palette()[1], col.lines = palette()[1], 
+       main = "Exponential Q-Q-Plot", xlab = "theoretische Standardexponential-Quantile", 
+       ylab = "empirische Quantile")

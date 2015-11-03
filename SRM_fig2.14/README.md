@@ -6,7 +6,6 @@
 
 ```yaml
 
-
 Name of QuantLet : SRM_fig2.14
 
 Published in : SRM
@@ -21,14 +20,15 @@ graphical representation'
 
 See also : 
 
-Author : Sandor
+Author : Wellisch
 
 Submitted :
 
 Datafile : 
 
 Example :
-- 'Q-Q-Normal-Plots mit Sollgeraden.'
+- 'Q-Q-Normal-Plots for four simulated samples of N(0,1), N(5,1), 
+N(0,9) and N(5,9).'
 
 ```
 
