@@ -1,0 +1,23 @@
+
+Name of QuantLet : SRM_fig2.14
+
+Published in : SRM
+
+Description : 'Produces the QQ plots for four simulated samples of 
+N(0,1), N(5,1), N(0,9) and N(5,9). QQ-plots compare empirical 
+quantiles of a distribution with theoretical quantiles of the standard 
+normal distribution.'
+
+Keywords : 'qq-plot, simulation, normal, normal distribution, plot,
+graphical representation'
+
+See also : 
+
+Author : Sandor
+
+Submitted :
+
+Datafile : 
+
+Example :
+- 'Q-Q-Normal-Plots mit Sollgeraden.'
