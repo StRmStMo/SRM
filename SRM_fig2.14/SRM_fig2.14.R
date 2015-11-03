@@ -8,8 +8,8 @@
 #              quantiles of a distribution with theoretical quantiles of the 
 #              standard normal distribution.
 # ------------------------------------------------------------------------------
-# Keywords:    plot, time-series, graphical representation, visualization,
-#              bond,
+# Keywords:    qq-plot, simulation, normal, normal distribution, plot, 
+#              graphical representation
 # ------------------------------------------------------------------------------
 # See also:
 # ------------------------------------------------------------------------------
