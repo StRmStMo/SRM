@@ -1,15 +1,13 @@
 
-Name of QuantLet : SRM_fig4.6
+Name of QuantLet : SRM_fig2.14
 
 Published in : SRM
 
-Description : 'Produces the QQ plots for simulated samples of standard 
-normal distribution and exponential distribution with sample size 100. 
-QQ-plots compare empirical quantiles of a distribution with theoretical 
-quantiles of the standard normal distribution.'
+Description : 'Plots and compares the confidence intervals for relative
+likelihood and relative log-likelihood functions.'
 
-Keywords : 'qq-plot, simulation, normal, normal distribution, plot,
-graphical representation, exponential'
+Keywords : 'confidence-interval, likelihood, function, plot, 
+visualization, graphical representation'
 
 See also : 
 
@@ -20,5 +18,5 @@ Submitted :
 Datafile : 
 
 Example :
-- 'QQ plots for simulated samples of standard normal distribution and 
-exponential distribution.'
+- 'Plots the confidence intervals for relative likelihood and relative
+log-likelihood functions.'

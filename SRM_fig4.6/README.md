@@ -1,66 +1,85 @@
 
 ![http://quantnet.wiwi.hu-berlin.de/style/banner.png](http://quantnet.wiwi.hu-berlin.de/style/banner.png)
 
-## ![qlogo](http://quantnet.wiwi.hu-berlin.de/graphics/quantlogo.png) **SRM_fig2.16**
+## ![qlogo](http://quantnet.wiwi.hu-berlin.de/graphics/quantlogo.png) **SRM_fig4.6**
 
 
 ```yaml
 
-
-Name of QuantLet : SRM_fig2.16
+Name of QuantLet : SRM_fig4.6
 
 Published in : SRM
 
-Description : 'Produces the QQ plots for simulated samples of standard 
-normal distribution and exponential distribution with sample size 100. 
-QQ-plots compare empirical quantiles of a distribution with theoretical 
-quantiles of the standard normal distribution.'
+Description : 'Plots and compares the confidence intervals for relative
+likelihood and relative log-likelihood functions.'
 
-Keywords : 'qq-plot, simulation, normal, normal distribution, plot,
-graphical representation, exponential'
+Keywords : 'confidence-interval, likelihood, function, plot, 
+visualization, graphical representation'
 
 See also : 
 
-Author : Wellisch
+Author : Sandor
 
 Submitted :
 
 Datafile : 
 
 Example :
-- 'QQ plots for simulated samples of standard normal distribution and 
-exponential distribution.'
+- 'Plots the confidence intervals for relative likelihood and relative
+log-likelihood functions.'
 
 ```
 
-![Picture1](SRM_fig2.16.png)
+![Picture1](SRM_fig4.6.png)
 
 ```R
 ## clear history
 rm(list = ls(all = TRUE))
 graphics.off()
 
-## install and load packages
-libraries = c("car")
-lapply(libraries, function(x) if (!(x %in% installed.packages())) {
-install.packages(x)
-})
-lapply(libraries, library, quietly = TRUE, character.only = TRUE)
+## Konfidentintervalle mit dem LQT
+y      = 4                             # 4 treffer bei 50 Beobachtungen
+n      = 50
+p_Dach = y/n                           # ML-Schaetzer fur Binomialverteilung
 
-## Stichproben erzeugen Fuer Reproduktion mit fester seed
-set.seed(1234)
-x <- rnorm(100)
-set.seed(1234)
-y <- rexp(100)
+## Funktionen
+L = function(p) p^y * (1 - p)^(n - y)  #Likelihood
+LR = function(p) L(p)/L(p_Dach)        #Relative Likelihood
 
 par(mfrow = c(1, 2))
+## Zeichne Relative Likelihood
+curve(LR, 0, 0.3, ylab = NA, xlab = expression(italic(theta1)), lwd = 2)
+mtext(expression(tilde(italic(L))), side = 2, line = 2)
+segments(0.08, 0, 0.08, 1, lty = 2, lwd = 2)     #Vertikale in p-Dach
+c1 = exp(-qchisq(0.95, 1)/2)                     #c1=95% Quantil der Chi^2_1
+c2 = exp(-qchisq(0.9, 1)/2)                      #c2=90% Quantil der Chi^2_1
+segments(0.02, c1, 0.175, c1, lty = 2, lwd = 2)  #Horizontale in c1
+segments(0, c2, 0.158, c2, lty = 1, lwd = 2)     #Horizontale in c2
+segments(0.032, 0, 0.032, c2, lwd = 2)           #Vertikale 1 zu c2\t
+segments(0.158, 0, 0.158, c2, lwd = 2)           #Vertikale 2 zu c2
+segments(0.025, 0, 0.025, c1, lwd = 2, lty = 2)  #Vertikale 1 zu c1
+segments(0.175, 0, 0.175, c1, lwd = 2, lty = 2)  #Vertikale 2 zu c1
+text(0.15, c2 + 0.04, expression(1 - alpha == 0.9))
+text(0.16, c1 + 0.04, expression(1 - alpha == 0.95))
+# text(0.01,c1,expression(lambda[alpha]))
 
-## col.lines=palette()[1] schwarze Sollgerade und KI
-qqPlot(x, dist = "norm", envelope = 0.99, col = palette()[1], col.lines = palette()[1], 
-main = "Normal Q-Q-Plot", xlab = "theoretische Standardnormal-Quantile", 
-ylab = "empirische Quantile")
+## Zeichne Relative Log-Likelihood
+LLR = function(p) -2 * log(LR(p), base = exp(1))
+curve(LLR, 0, 0.3, ylab = NA, xlab = expression(italic(theta1)), lwd = 2, 
+ylim = c(-1, 17))
+mtext(expression(-2(italic(l)(theta1) - italic(l)(hat(theta1)))), side = 2, 
+line = 2)
 
-qqPlot(y, dist = "exp", envelope = 0.99, col = palette()[1], col.lines = palette()[1], 
-main = "Exponential Q-Q-Plot", xlab = "theoretische Standardexponential-Quantile", 
-ylab = "empirische Quantile")
+segments(0.08, -1, 0.08, 15, lty = 2, lwd = 2)    #Vertikale in p-Dach
+c1 = qchisq(0.95, 1)                              #c1=95% Quantil der Chi^2_1
+c2 = qchisq(0.9, 1)                               #c2=90% Quantil der Chi^2_1
+segments(0.02, c1, 0.175, c1, lty = 2, lwd = 2)   #Horizontale in c1
+segments(0, c2, 0.158, c2, lty = 1, lwd = 2)      #Horizontale in c2
+segments(0.032, -1, 0.032, c2, lwd = 2)           #Vertikale 1 zu c2\t
+segments(0.158, -1, 0.158, c2, lwd = 2)           #Vertikale 2 zu c2
+segments(0.025, -1, 0.025, c1, lwd = 2, lty = 2)  #Vertikale 1 zu c1
+segments(0.175, -1, 0.175, c1, lwd = 2, lty = 2)  #Vertikale 2 zu c1
+text(0.15, c2 + 0.6, expression(1 - alpha == 0.9))
+text(0.16, c1 + 0.6, expression(1 - alpha == 0.95))
+
 ```
