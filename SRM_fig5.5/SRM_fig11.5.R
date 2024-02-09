@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------
 # Project:     SRM - Stochastische Risikomodellierung und statistische Methoden
 # ------------------------------------------------------------------------------
-# Quantlet:    SRM_fig5.5
+# Quantlet:    SRM_fig11.5
 # ------------------------------------------------------------------------------
 # Description: Produces the plots of evaluating denisities of Archimedean copulae
 #              under (size=500, size of parameters=3, dimension=2) and (size=500,  
